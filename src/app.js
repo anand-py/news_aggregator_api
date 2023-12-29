@@ -19,6 +19,7 @@ app.use(bodyParser.json())
 
 // Routes
 app.use('/api', authRoutes);
+app.use('/api', newsRoutes);
 
 // Start the server
 app.listen(PORT,(err)=>{

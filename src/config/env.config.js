@@ -1,9 +1,5 @@
 require('dotenv').config();
 
-const {
-    PORT,
-    CONNECTION_STRING,
-    SECERET_KEY
-} = process.env;
+const {PORT, CONNECTION_STRING, TOKEN} = process.env;
 
-module.exports = {PORT,CONNECTION_STRING, SECERET_KEY}
+module.exports = {PORT,CONNECTION_STRING, TOKEN}

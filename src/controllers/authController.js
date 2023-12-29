@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const users = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
-require('dotenv').config();
+const TOKEN = require("../config/env.config")
 
 //@desc Register a user
 //@route POST /api/register
