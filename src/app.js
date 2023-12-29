@@ -1,14 +1,24 @@
 // Import required packages
-const bodyParser = require("body-parser");
-const express = require("express");
 
+const express = require("express");
+const bodyParser = require("body-parser");
+const routes = require("express").Router();
+const authRoutes = require("../src/routes/authRoutes")
+require('dotenv').config();
+const connectDb = require("../src/config/db.connection")
+
+
+connectDb()
 
 // Initialize Express
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(bodyParser)
+app.use(bodyParser.json())
+
+// Routes
+app.use('/api', authRoutes);
 
 // Start the server
 app.listen(PORT,(err)=>{
