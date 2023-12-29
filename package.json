@@ -1,0 +1,14 @@
+{
+  "name": "news_aggregator_api",
+  "version": "1.0.0",
+  "description": "Fetching news with there preferences",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
