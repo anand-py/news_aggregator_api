@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const users = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
+const {default: axios} = require('axios');
 
 
 
@@ -41,10 +42,19 @@ const news = asyncHandler(async (req, res) => {
         params: {
           country: 'us',
           category: req.user.preferences.join(','), // Pass user preferences as categories
-          apiKey: 'your_news_api_key',
+          apiKey: '2f5ba1de7c8e48839714570c4f771ee6',
         },
       });
-    });
+  
+      // Process and filter news data based on user preferences
+      const filteredNews = newsAPIResponse.data.articles.filter(article => {
+        // Add your filtering logic here based on user preferences
+        return true;
+      });
+  
+      res.json(filteredNews);
+    }) 
+    
 
 
 module.exports = {getPreferences, updatePreferences, news};

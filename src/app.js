@@ -18,8 +18,8 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json())
 
 // Routes
-app.use('/api', authRoutes);
-app.use('/api', newsRoutes);
+app.use('/api', require("../src/routes/authRoutes"));
+app.use('/api', require("../src/routes/newsRoutes"));
 
 // Start the server
 app.listen(PORT,(err)=>{
