@@ -5,7 +5,7 @@ const verifyToken = require("../middleware/authJWT")
 const router = express.Router();
 
 router.get('/preferences',verifyToken,getPreferences)
-router.get('/updatePreferences',verifyToken, updatePreferences)
+router.put('/updatePreferences',verifyToken, updatePreferences)
 router.get('/news',verifyToken, news)
 
 module.exports = router; 

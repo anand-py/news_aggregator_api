@@ -1,25 +1,30 @@
-const jwt = require('jsonwebtoken');
+const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
-const verifyToken = (req, res, next) => {
-  //Checking whether the user has passed the header and specifically
-  //headers.authorization or not
-  if(req.headers && req.headers.authorization) {
-    jwt.verify(req.headers.authorization, "NEWS", function(err, decode) {
-        if(err) {
-            req.user = null;
-            req.message = "Header verification failed, some issue with the token";
-            next();
-        } else {
-            req.user = decode.id;
-            req.message = "User found successfully";
-            next();
-        }
-    });
-  } else {
-      req.user = null;
-      req.message = "Authorization header not found";
+
+
+
+const verifyToken = asyncHandler(async (req, res, next) => {
+  let token;
+  let authHeader = req.headers.Authorization || req.headers.authorization;
+  if (authHeader && authHeader.startsWith("Bearer")) {
+    token = authHeader.split(" ")[1];
+    jwt.verify(token, "NEWS", (err, decoded) => {
+      if (err) {
+        res.status(401)
+        console.error(err);
+        throw new Error("User is not authorized");
+        
+      }
+      req.user = decoded.user;
       next();
-  }
-}
+    });
 
+    if (!token) {
+      res.status(401)
+      throw new Error("User is not authorized or token is missing");
+    }
+  }
+})
 module.exports = verifyToken;

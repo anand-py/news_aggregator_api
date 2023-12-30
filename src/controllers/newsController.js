@@ -11,14 +11,15 @@ const {default: axios} = require('axios');
 //@access private
 const getPreferences = asyncHandler(async(req,res)=>{
     const userId = req.userId;
-    const user = await users.findByID({userId});
+    const user = await users.findById(userId);
     if(!user){
         res.status(404)
         throw new Error("User not found")
     }
     res.status(200)
-    res.json(req.user.preferences);
+    res.json(user.preferences);
 })
+
 
 
 //@desc Update Preferences
@@ -41,8 +42,8 @@ const news = asyncHandler(async (req, res) => {
       const newsAPIResponse = await axios.get('https://newsapi.org/v2/top-headlines', {
         params: {
           country: 'us',
-          category: req.user.preferences.join(','), // Pass user preferences as categories
-          apiKey: '2f5ba1de7c8e48839714570c4f771ee6',
+        
+          apiKey: '936ccac271e141419b0ff56b6081226d',
         },
       });
   
