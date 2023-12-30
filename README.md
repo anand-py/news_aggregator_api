@@ -28,5 +28,24 @@ Test the API using Postman or Curl to ensure it works as expected.
 Initialize a new Node.js project.
 
 
+# Step-by-Step Guide:
+**Step 1: Initialize a new Node.js project**
+Create a new directory for your project
+
+mkdir news-aggregator-api cd news-aggregator-api
+
+Initialize a new Node.js project
+
+npm init -y
+
+**Step 2: Install Dependencies**
+
+Install necessary packages like Express and body-parser. npm install express body-parser
+
+**Step 3: Implementing the API**
+**Run the application**
+node news_aggegrator_api/src/app.js
+
+
 
 
